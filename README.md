@@ -12,7 +12,7 @@ yarn add vue-fx
 npm install vue-fx --save
 ```
 
-## Usage
+## 使用方法
 
 ### Vue-Router
 
@@ -49,3 +49,5 @@ fenxi(
   domainId
 )
 ```
+
+Inspired by [vue-ga](https://github.com/egoist/vue-ga/).
