@@ -15,7 +15,7 @@ npm install vue-fx --save
 > :warning: 本模块将根据 domainId 加载统计脚本。
 > 建议**去掉** HTML 中的引用，即去掉 `<script src="//s.union.360.cn/12345.js" async defer></script>` 这种代码。
 
-## 使用
+## 使用方法
 
 ### Vue-Router
 
@@ -59,3 +59,5 @@ Vue360Analysis(
   domainId
 )
 ```
+
+Inspired by [vue-ga](https://github.com/egoist/vue-ga/).
