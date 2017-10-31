@@ -12,8 +12,7 @@ yarn add vue-fx
 npm install vue-fx --save
 ```
 
-> :warning: 本模块将根据 domainId 加载统计脚本。
-> 建议**去掉** HTML 中的引用，即去掉 `<script src="//s.union.360.cn/12345.js" async defer></script>` 这种代码。
+> :warning: 本模块将根据 domainId 加载统计脚本。建议**去掉** HTML 中的引用，即去掉 `<script src="//s.union.360.cn/12345.js" async defer></script>` 这种代码。
 
 ## 使用方法
 
@@ -43,6 +42,10 @@ Vue360Analysis(router, domainId)
 new Vue({ router }).$mount('#app')
 ```
 
+#### Demo
+
+- [Vue and VueRouter](https://code.h5jun.com/bat)
+
 ### 非 Vue-Router
 
 如果不是 Vue 项目，或没有使用 Vue-Router，则可以按照如下示例引入（请按照项目实际情况处理）：
@@ -60,4 +63,28 @@ Vue360Analysis(
 )
 ```
 
+请根据项目实际情况（使用的框架和路由工具），在相应的位置（钩子/guard/回调/生命周期）调用。
+
+一种简便的方法如下，下面是示意：
+
+```js
+const collect = Vue360Analysis(fn => fn, domainId)
+
+// component A
+afterRender () {
+  collect('/A')
+}
+
+// componentB
+afterRender () {}
+  collect('/B')
+}
+```
+
+#### DEMO
+
+- [React hash mode](https://code.h5jun.com/hebi/)
+- [React Router 2](https://code.h5jun.com/mido)
+
+---
 Inspired by [vue-ga](https://github.com/egoist/vue-ga/).
