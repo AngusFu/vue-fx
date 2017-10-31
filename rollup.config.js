@@ -6,7 +6,7 @@ export default {
   output: [
     {
       file: 'dist/index.js',
-      name: 'vuefx',
+      name: 'Vue360Analysis',
       format: 'umd'
     },
     {
