@@ -6,21 +6,18 @@ const SYMBOL_LIB = '_qha'
 const document = global.document
 const location = global.location
 
-// assert type
-const isFunction = param => typeof param === 'function'
-
-// call function `fn` only once
-const callOnlyOnce = fn => {
-  let called = false
-  return function once () {
-    if (called) return
-    called = true
-    return isFunction(fn) && fn.apply(this, arguments)
-  }
+const isFunction = function (param) {
+  return typeof param === 'function'
 }
 
-// insert 360fenxi script
-const insertScript = callOnlyOnce(domainId => {
+const init = function (domainId) {
+  global[SYMBOL_LIB] = isFunction(global[SYMBOL_LIB]) ? global[SYMBOL_LIB] : function () {
+    global[SYMBOL_LIB].c = global[SYMBOL_LIB].c || []
+    global[SYMBOL_LIB].c.push(arguments)
+  }
+
+  global[SYMBOL_LIB].s = 1
+
   const protocol = location.protocol === 'https:' ? location.protocol : 'http:'
   const script = document.createElement('script')
   script.defer = true
@@ -29,23 +26,12 @@ const insertScript = callOnlyOnce(domainId => {
 
   const first = document.getElementsByTagName('script')[0]
   first.parentNode.insertBefore(script, first)
-})
+}
 
 // send data
-let collect = function (url, domainId) {
-  insertScript(domainId)
-
-  collect = (url, domainId) => {
-    global[SYMBOL_LIB] = isFunction(global[SYMBOL_LIB]) ? global[SYMBOL_LIB] : function () {
-      global[SYMBOL_LIB].c = global[SYMBOL_LIB].c || []
-      global[SYMBOL_LIB].c.push(arguments)
-    }
-
-    global[SYMBOL_LIB]('set', 'page', url)
-    global[SYMBOL_LIB]('send', 'pageview')
-  }
-
-  collect(url, domainId)
+let collect = function (url) {
+  global[SYMBOL_LIB]('set', 'page', url)
+  global[SYMBOL_LIB]('send', 'pageview')
 }
 
 export default function (router, domainId) {
@@ -60,12 +46,14 @@ export default function (router, domainId) {
   }
 
   if (isFunction(router)) {
-    return router(url => collect(url, domainId))
+    return router(collect)
   }
 
   if (isFunction(router.afterEach)) {
-    return router.afterEach(to => collect(to.fullPath, domainId))
+    init(domainId)
+    return router.afterEach(to => collect(to.fullPath))
   }
 
   throw new TypeError('\nParameter `router` is invalid.\nVueRouter instance or function required.')
 }
+
