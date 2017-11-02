@@ -12,7 +12,7 @@ yarn add vue-fx
 npm install vue-fx --save
 ```
 
-> :warning: 本模块将根据 domainId 加载统计脚本。建议**去掉** HTML 中的引用，即去掉 `<script src="//s.union.360.cn/12345.js" async defer></script>` 这种代码。
+> :warning: 本模块将根据 domainId 加载统计脚本。使用本模块无需自行安装基础流量代码。
 
 ## 使用方法
 
@@ -44,7 +44,7 @@ new Vue({ router }).$mount('#app')
 
 #### Demo
 
-- [Vue and VueRouter](https://code.h5jun.com/bat)
+- [Vue and VueRouter](https://code.h5jun.com/desax)
 
 ### 非 Vue-Router
 
@@ -83,8 +83,8 @@ afterRender () {}
 
 #### DEMO
 
-- [React hash mode](https://code.h5jun.com/hebi/)
-- [React Router 2](https://code.h5jun.com/mido)
+- [React hash mode](https://code.h5jun.com/tusa/)
+- [React Router 2](https://code.h5jun.com/mexi)
 
 ---
 Inspired by [vue-ga](https://github.com/egoist/vue-ga/).
