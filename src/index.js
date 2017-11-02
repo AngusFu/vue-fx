@@ -26,7 +26,7 @@ const init = function (domainId) {
 }
 
 // send data
-let collect = function (url) {
+const collect = function (url) {
   global[SYMBOL_LIB]('set', 'page', url)
   global[SYMBOL_LIB]('send', 'pageview')
 }
