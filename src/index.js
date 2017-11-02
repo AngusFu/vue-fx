@@ -46,6 +46,7 @@ export default function (router, domainId) {
   }
 
   if (isFunction(router)) {
+    init(domainId)
     return router(collect)
   }
 
@@ -54,6 +55,6 @@ export default function (router, domainId) {
     return router.afterEach(to => collect(to.fullPath))
   }
 
-  throw new TypeError('\nParameter `router` is invalid.\nVueRouter instance or function required.')
+  throw new TypeError('\nParameter `router` is invalid.\n A VueRouter instance or function is required.')
 }
 
