@@ -1,6 +1,3 @@
-/**
- * author: wemion<angusfu1126@qq.com>
- */
 const global = window
 const SYMBOL_LIB = '_qha'
 const document = global.document
