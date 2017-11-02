@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/vue-fx.svg?style=flat-square)](https://npmjs.com/package/vue-fx)
 
-针对 Vue.js 应用的 [360 分析](https://fenxi.360.cn/login/present)插件。
+[分析](https://fenxi.360.cn/login/present) 单页应用插件。
 
 ## 代码安装
 
