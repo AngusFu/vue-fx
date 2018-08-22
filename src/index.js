@@ -54,4 +54,3 @@ export default function (router, domainId) {
 
   throw new TypeError('\nParameter `router` is invalid.\n A VueRouter instance or function is required.')
 }
-
