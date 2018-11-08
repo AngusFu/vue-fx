@@ -83,6 +83,7 @@ afterRender () {}
 
 #### DEMO
 
+- [React Demo](https://codesandbox.io/s/pmmoy3x887)
 - [React hash mode](https://code.h5jun.com/tusa/)
 - [React Router 2](https://code.h5jun.com/mexi)
 
